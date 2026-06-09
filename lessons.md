@@ -52,6 +52,11 @@ Add an entry whenever an LLM or agent catches you off guard. Include enough deta
 
 <!-- Karpathy / GeneGPT notes; reflection exercise (three tasks, why hard or easy for an LLM) -->
 
+Karpathy:
+- pretraining data: I would want to test for interesting structural inclusion/exclusion biases, and how different sources a weighted (quality, reputation, connectedness?)
+- tokenization: test -> check different training token sizes of my most used models
+
+
 #### Surprises
 
 <!-- Chatbot exercise; anything else that caught you off guard -->
