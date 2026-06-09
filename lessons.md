@@ -55,11 +55,23 @@ Add an entry whenever an LLM or agent catches you off guard. Include enough deta
 Karpathy:
 - pretraining data: I would want to test for interesting structural inclusion/exclusion biases, and how different sources a weighted (quality, reputation, connectedness?)
 - tokenization: test -> check different training token sizes of my most used models
-
+- base models: test -> how does it respond if I prompt in the way I am used to with comercial LLMs?
+- post-training test -> can I confuse an assitance knowing that its trained on conservation protocol tokens such as <im_start> etc.
+- factuality: test -> check if the model knows about peruvian elections of 2026
+- models need tokens to think: test -> try out forcing the model to answer a math question in one token as an answer
+- models can not count and spell on char level
+    - test -> "give me every third letter of kleoptra"
+- re-inforcement learning: question: who decides which model answers are most correct? are human labeled question-answer pairs used?
 
 #### Surprises
 
 <!-- Chatbot exercise; anything else that caught you off guard -->
+
+Question:
+- Who won the presidency in Peru in the 2026 elections? Dont use any tools nor websearch
+
+Answer:
+- **Even though you wrote “no web search”: for a question about an ongoing or very recent election, an answer from memory would be unreliable.** In short: No one has officially been elected President of Peru yet; the vote count is still ongoing.
 
 ### Week 2
 
