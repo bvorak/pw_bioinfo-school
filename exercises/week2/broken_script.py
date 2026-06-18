@@ -1,42 +1,44 @@
-"""Small intentionally broken FASTA summarizer for Week 2.
+'''FASTA summarizer - Week 2 exercise.
 
-Use an agentic IDE to fix this script one issue at a time. The intended
-behavior is: read a FASTA file, print one row per sequence, and report sequence
-length plus GC percentage.
-"""
+Reads a FASTA file, prints each sequence id, its length, and GC% percentage.
+'''
 
 from pathlib import Path
 
-
-def read_fasta(path):
+def parse_fasta(file_path: str) -> dict:
+    """Parse a FASTA file and return a dict of {header: sequence}."""
     records = {}
-    current_name = None
-    current_seq = []
+    header = None
+    seq_parts = []
 
-    for line in Path(path).read_text().splitlines():
+    for line in Path(file_path).read_text().splitlines():
         line = line.strip()
+        if not line:
+            continue
         if line.startswith(">"):
-            if current_name:
-                records[current_name] = "".join(current_seq)
-            current_name = line[1:]
-            current_seq = []
+            if header is not None:
+                records[header] = "".join(seq_parts)
+            header = line[1:]
+            seq_parts = []
         else:
-            current_seq.append(line)
+            seq_parts.append(line)
 
+    if header is not None:
+        records[header] = "".join(seq_parts)
     return records
 
+def gc_percentage(seq: str) -> float:
+    """Return GC percentage of a nucleotide sequence."""
+    if len(seq) == 0:
+        return 0.0
+    gc = seq.count("G") + seq.count("C")
+    return (gc / len(seq)) * 100
 
-def gc_percent(sequence):
-    gc = sequence.count("G") + sequence.count("C")
-    return gc / len(sequence)
-
-
-def main():
-    records = read_fasta("example.fa")
-
-    for name, sequence in records:
-        print(name, len(sequence), gc_percent(sequence))
-
+def main() -> None:
+    fasta_path = "example.fa"
+    records = parse_fasta(fasta_path)
+    for name, seq in records.items():
+        print(f"{name}\t{len(seq)}\t{gc_percentage(seq):.2f}%")
 
 if __name__ == "__main__":
     main()
