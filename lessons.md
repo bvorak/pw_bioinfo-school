@@ -61,7 +61,16 @@ Karpathy:
 - models need tokens to think: test -> try out forcing the model to answer a math question in one token as an answer
 - models can not count and spell on char level
     - test -> "give me every third letter of kleoptra"
-- re-inforcement learning: question: who decides which model answers are most correct? are human labeled question-answer pairs used?
+- re-inforcement learning (RL): question: who decides which model answers are most correct? are human labeled question-answer pairs used?
+- RL vs RLHF (Reinforcement Learning with human feedback) 
+    - RLHF is for unverifiable domains
+    - Try -> find verifiable and unverifiable domains in ecology and ways a reward model for the later could be gamed by the RL process (e.g. shortcuts in producing plausible new gene function mappings)
+
+
+
+reflection:
+- summarizing the whole worfklow of my 30 pages methods chapter in a neat marmaid flowchart -> the marmaid looks nice BUT the summary of my text is very shallow and even wrong
+    - tokenizing my 30pages seemes to have been bigger than the 200000 context window availabel for the gimini 3.1 model used.
 
 #### Surprises
 
@@ -79,9 +88,21 @@ Answer:
 
 <!-- ReAct / Karpathy Software 3.0 notes; trap-exercise discussion questions -->
 
+
+``` python
+    # Ensure the last sequence is stored
+    if current_name:
+        records[current_name] = "".join(current_seq)
+    return records
+```
 #### Surprises
 
 <!-- Trap exercise, mini-project, agent moments — be specific -->
+
+- I asked to refactor, it did, and added type hints. I asked to explain which type hints it added and it answered with type hints it never added in the step before but just made up in the answer some hints that seemed plausible that it did add in the step before. This was GPT-OSS-120B again, and I did not tell it to look into the code as I thought it will do so if I ask it about code changes it just did. 
+
+- I can see some agentic protocol tokens here in Gravity 2.0 using GPT-OSS-120B, and thanks to Karpathy know what they are:
+![alt text](imagen.png)
 
 ### Week 3
 
